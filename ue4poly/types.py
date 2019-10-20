@@ -21,13 +21,17 @@ class MsgpackMixin:
 
 
 class DPCommand(MsgpackMixin): 
-    lifetime = -1.0;
-    shell = [];
-    holes = [[]];
-    color = [255, 0, 0]
+    lifetime = -1.0
+    shell = []
+    holes = [[]]
+    shell_color = [0, 255, 0]
+    hole_color = [255, 0, 0]
+    thickness = 1.0
 
-    def __init__(self, lifetime=-1.0, shell=[], holes=[[]], color=[255, 0, 0]):
+    def __init__(self, lifetime=-1.0, shell=[], holes=[[]], shell_color=[0, 255, 0], hole_color=[255, 0, 0], thickness=1.0):
         self.lifetime = lifetime
         self.shell = shell
         self.holes = holes
-        self.color = color
+        self.shell_color = shell_color
+        self.hole_color = hole_color
+        self.thickness = thickness

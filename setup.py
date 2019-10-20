@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.1",
     author="Jeremy Castagno",
     author_email="jdcata@umich.edu",
-    description="UE4 Polygon Generator",
+    description="UE4 Polygon Client",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/microsoft/airsim",
