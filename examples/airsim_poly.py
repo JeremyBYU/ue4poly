@@ -48,7 +48,7 @@ def draw_pc_poly(client, poly_client, ue4_origin=[0,0,0], lifetime=5.0, polylida
         polygon_shapely = convert_to_shapely_polygons(polygons, pc, return_first=True, sort=True)
         lr_list = shapely_to_lr_list(polygon_shapely, ue4_origin=ue4_origin)
 
-        cmd = DPCommand(lifetime=lifetime, shell=lr_list['shell'], holes=lr_list['holes'],thickness=4.0)
+        cmd = DPCommand(lifetime=lifetime, shell=lr_list['shell'], holes=lr_list['holes'],thickness=8.0)
         poly_client.draw_polygon(cmd)
 
 
@@ -61,9 +61,10 @@ def main():
     poly_client = UE4Poly(port=3000)
 
     # client.takeoffAsync().join()
-    rate = 0.5
+    rate = 1.0
+    ue4_origin = [1490, -1120.0, 2590]
     while True:
-        draw_pc_poly(client, poly_client, ue4_origin=[-380, 0, 100], lifetime=rate)
+        draw_pc_poly(client, poly_client, ue4_origin=ue4_origin, lifetime=rate)
         time.sleep(rate)
 
 
