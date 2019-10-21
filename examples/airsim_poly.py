@@ -20,10 +20,10 @@ def convert_to_ue4(points, scale=100.0, ue4_origin=[0,0,0]):
     """
     Converts NX3 Numpy Array in AirSim NED frame to a flattened UE4 frame 
     """
-    points = points * scale
-    points[:,-1] = -points[:,-1]
-    points = points + ue4_origin
-    points = points.flatten().tolist()
+    points = points * scale # meters to cm
+    points[:,-1] = -points[:,-1] # AirSim NED z axis is inverted
+    points = points + ue4_origin # Shift to true unreal origin
+    points = points.flatten().tolist() # Flatten data, return list for msgpack
     return points
 
 def shapely_to_lr_list(poly, scale=100.0, ue4_origin=[0,0,0]):
@@ -61,7 +61,7 @@ def main():
     poly_client = UE4Poly(port=3000)
 
     # client.takeoffAsync().join()
-    rate = 1.0
+    rate = 0.25
     ue4_origin = [1490, -1120.0, 2590]
     while True:
         draw_pc_poly(client, poly_client, ue4_origin=ue4_origin, lifetime=rate)
